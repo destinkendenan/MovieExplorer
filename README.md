@@ -39,9 +39,10 @@ MovieExplorer adalah aplikasi Android untuk menjelajahi dan menyimpan informasi 
 java/com/example/movieapp/
 ├── data/
 │   ├── local/
-│   │   ├── BookmarkContract.java
-│   │   ├── BookmarkManager.java
-│   │   └── DatabaseHelper.java
+│   │   ├── BookmarkEntity.java
+        ├── BookmarkManager.java
+│   │   ├── DatabaseContract.java
+│   │   └── MovieDatabaseHelper.java
 │   ├── model/
 │   │   ├── Cast.java
 │   │   ├── CastResponse.java

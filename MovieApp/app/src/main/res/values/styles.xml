@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="RoundedCornerImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <!-- Custom genre chip style -->
+    <style name="CustomYellowChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <!-- Remove checkmark -->
+        <item name="checkedIconVisible">false</item>
+        
+        <!-- Set selected background color to yellow -->
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+        
+        <!-- Customize text color -->
+        <item name="android:textColor">@color/chip_text_color</item>
+    </style>
+
+    <style name="NoBackgroundBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <!-- Remove the ripple effect background -->
+        <item name="itemRippleColor">@android:color/transparent</item>
+        
+        <!-- Remove the background highlight on selection -->
+        <item name="itemBackground">@android:color/transparent</item>
+    </style>
+
+</resources>

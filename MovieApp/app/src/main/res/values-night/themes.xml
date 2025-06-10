@@ -1,0 +1,30 @@
+<resources>
+    <style name="Base.Theme.MovieApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/background_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/background_dark</item>
+        <item name="colorSurface">@color/surface_dark</item>
+        <item name="colorOnBackground">@color/text_primary_dark</item>
+        <item name="colorOnSurface">@color/text_primary_dark</item>
+        
+        <!-- Custom attributes -->
+        <item name="android:textColorPrimary">@color/text_primary_dark</item>
+        <item name="android:textColorSecondary">@color/text_secondary_dark</item>
+        <item name="cardBackgroundColor">@color/card_background_dark</item>
+        <item name="dividerColor">@color/divider_dark</item>
+    </style>
+    
+    <!-- Custom RatingBar style with gold stars -->
+    <style name="GoldenRatingBar" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="colorControlActivated">@color/primary</item>
+        <item name="colorControlNormal">@color/text_secondary_dark</item>
+    </style>
+</resources>

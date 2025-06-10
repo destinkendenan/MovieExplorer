@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.SearchFragment">
+
+    <!-- Back Button - Updated constraint references -->
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_back"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvSearch"
+        app:layout_constraintBottom_toBottomOf="@id/tvSearch"
+        app:tint="#FFC700" />
+
+    <!-- Updated Title ID and text -->
+    <TextView
+        android:id="@+id/tvSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toEndOf="@id/ivBack"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/ivThemeToggleSearch"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_dark_mode"
+        android:contentDescription="Toggle Theme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvSearch"
+        app:layout_constraintBottom_toBottomOf="@id/tvSearch" />
+
+    <!-- Search Bar - Updated constraint reference -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardSearchBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSearch">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="12dp"
+                android:src="@android:drawable/ic_menu_search"
+                android:contentDescription="Search icon" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="Search movies..."
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <ImageView
+                android:id="@+id/ivClear"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="12dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:contentDescription="Clear search" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Search History Title -->
+    <TextView
+        android:id="@+id/tvHistoryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recent Searches"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardSearchBar" />
+
+    <!-- Clear History Button -->
+    <TextView
+        android:id="@+id/tvClearHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear All"
+        android:textColor="@color/primary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvHistoryTitle"
+        app:layout_constraintBottom_toBottomOf="@id/tvHistoryTitle" />
+
+    <!-- Search History Chips -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupHistory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:chipSpacingHorizontal="8dp"
+        app:chipSpacingVertical="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHistoryTitle" />
+
+    <!-- Update Genre Title's constraint to be below History instead of search bar -->
+    <TextView
+        android:id="@+id/tvGenreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Genres"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipGroupHistory" />
+    <!-- Genre Selection Horizontal Scrolling -->
+    <HorizontalScrollView
+        android:id="@+id/hsvGenres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/tvGenreTitle">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupGenres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="false"
+            app:chipSpacingHorizontal="8dp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAction"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Action" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAdventure"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adventure" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipComedy"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comedy" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCrime"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crime" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipDrama"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drama" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipFantasy"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fantasy" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipHorror"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horror" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMystery"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mystery" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipRomance"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Romance" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSciFi"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sci-Fi" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipThriller"
+                style="@style/CustomYellowChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thriller" />
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- Results Title -->
+    <TextView
+        android:id="@+id/tvResultsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Results"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hsvGenres" />
+
+    <!-- Search Results -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchResults"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/item_film"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResultsTitle" />
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/llEmptyState"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResultsTitle">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@android:drawable/ic_menu_search"
+            android:alpha="0.5"
+            android:contentDescription="No results" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="No movies found"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Try changing your search query or filters" />
+    </LinearLayout>
+
+    <!-- Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResultsTitle" />
+
+    <!-- Footer Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/footerProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Network Error View -->
+    <include
+        android:id="@+id/networkErrorView"
+        layout="@layout/layout_network_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
